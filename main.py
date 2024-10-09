@@ -1,4 +1,5 @@
 import sys
+import math
 import RPi.GPIO as GPIO
 from gpiozero import Servo
 from time import sleep
@@ -18,6 +19,11 @@ def dump_food():
     sleep(2)
     servo.max()
     print("that now it should stop")
+    #this should sweep back and forth. Not tested on the servo
+    while True:
+    for i in range(0, 360):
+        servo.value = math.sin(math.radians(i))
+        sleep(0.01)
 
 def cleanAndExit():
     print("Cleaning...")
